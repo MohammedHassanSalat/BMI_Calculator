@@ -28,7 +28,7 @@ export class AppComponent {
     if (height > 0 && weight > 0) {
       const bmi = weight / (height * height);
       this.result = bmi.toFixed(2);
-      this.calculateStatus(bmi);
+      this.status = this.calculateStatus(bmi);
     }
     else {
       this.result = 'N/A';
@@ -36,10 +36,10 @@ export class AppComponent {
     }
   }
 
-  calculateStatus(bmi: number) {
-    if (bmi < 18.5) this.status = 'UnderWeight';
-    if (bmi < 25) this.status = 'Normal';
-    if (bmi < 30) this.status = 'Overweight';
+  calculateStatus(bmi: number): string {
+    if (bmi < 18.5) return 'UnderWeight';
+    if (bmi < 25) return 'Normal';
+    if (bmi < 30) return 'Overweight';
     return 'Obese';
   }
 }
